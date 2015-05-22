@@ -1,0 +1,14 @@
+{
+  "name": "fumaso",
+  "description": "FUMASO",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xiamike/fumaso.git"
+  },
+  "author": "MIKE XIA",
+  "license": "MIT",
+  "dependencies": {
+    "famous": "git+ssh://git@github.com/famous/engine"
+  }
+}
