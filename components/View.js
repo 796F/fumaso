@@ -2,8 +2,6 @@
  * View class that extends Modifier and should be used for visual elements.
  */
 
-const EventMap = Object.keys(FamousPlatform.domRenderers.Events.EventMap);
-
 const Color = FamousPlatform.utilities.Color;
 const Transitionable = FamousPlatform.transitions.Transitionable;
 const DOMElement = FamousPlatform.domRenderables.DOMElement;
@@ -97,33 +95,10 @@ export default class View {
   }
 
   on(evName, fn) {
-    if (EventMap.indexOf(evName) > -1) {
-      this.validateDOM();
-      this.node.addUIEvent(evName);
-      this._events[evName] = fn;
-    } else {
-      EventEmitter.on(evName, fn);
-    }
+    this.validateDOM();
+    this.node.addUIEvent(evName);
+    this._events[evName] = fn;
     return this;
-  }
-  off(evName, fn) {
-    if (EventMap.indexOf(evName) > -1) {
-      // TODO: Not implemented for DOM yet
-    } else {
-      EventEmitter.off(evName, fn);
-    }
-  }
-
-  // Global Events
-  trigger(evName, payload) {
-    EventEmitter.trigger(evName, payload);
-    return this;
-  }
-  emit(evName, payload) {
-    console.warn('View.emit() is deprecated. Use View.trigger() instead.');
-    return this.trigger(evName, payload);
-    // if (!this.eventEmitter) this.eventEmitter = new EventEmitter(this.node);
-    // this.eventEmitter.emit(ev, payload);
   }
 
   // ---------------------------------------------------------------------------

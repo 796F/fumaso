@@ -1,5 +1,5 @@
 import assign from '../../util/assign';
-import View from '../View';
+import View from '../components/View';
 
 const SLIDER_STYLES = {
   color: 'white',

@@ -2,13 +2,32 @@ const Curves = FamousPlatform.transitions.Curves;
 const FamousEngine = FamousPlatform.core.FamousEngine;
 const Transitionable = FamousPlatform.transitions.Transitionable;
 
+const FORWARDS = 'forwards';
+const BACKWARDS = 'backwards';
+
 export default class Timeline {
   constructor(options = {}) {
     this.pathSet = [];
+    // this.callbackSet = [];
+
     this.timescale = options.timescale || 1;
-    this.currentTime = new Transitionable(0);
+    this.currentTime = new Transitionable(options.startTime || 0);
     this.endTime = 0;
   }
+
+  /*
+        callbackData = {
+          handler : function(value) {
+            console.log(value);
+          },
+          time : 5000,
+          direction : 'forwards'
+        }
+  */
+
+  // registerCallback(callbackData, function) {
+  //   this.callbackSet.push(callbackData);
+  // }
 
   /*
         pathData = {
@@ -52,9 +71,24 @@ export default class Timeline {
   }
 
   onUpdate(time) {
-    // go through the pathSet, and basically execute the function
-
     time = this.currentTime.get() * this.timescale;
+
+    //go through callbacks
+
+    // for(var i=0; i<this.callbackSet.length; i++) {
+    //   if(this.direction === FORWARDS && this.callbackSet[i].direction === FORWARDS) {
+    //     //forward
+    //     if(time >= this.callbackSet[i].time) {
+    //       this.callbackSet[i].handler(time);
+    //     }
+    //   } else if(this.direction === BACKWARDS && this.callbackSet[i].direction === BACKWARDS) {
+    //     if(time <= this.callbackSet[i].time) {
+    //       this.callbackSet[i].handler(time);
+    //     }
+    //   }
+    // }
+
+    // go through the pathSet, and basically execute the function
 
     for (let i = 0; i < this.pathSet.length; i++) {
       let pathData = this.pathSet[i];

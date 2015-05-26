@@ -6,8 +6,26 @@
     "type": "git",
     "url": "https://github.com/xiamike/fumaso.git"
   },
+  "scripts": {
+    "dev": "npm run watch & serve public/ -p 1337",
+    "watch": "watchify examples/index.js -o public/index.bundle.js -d -v"
+  },
   "author": "MIKE XIA",
   "license": "MIT",
+  "browserify": {
+    "transform": [
+      "cssify",
+      "babelify"
+    ]
+  },
+  "devDependencies": {
+    "babelify": "6.1.0",
+    "browserify": "10.2.0",
+    "cssify": "0.7.0",
+    "serve": "1.4.0",
+    "uglify-js": "2.4.21",
+    "watchify": "3.2.1"
+  },
   "dependencies": {
     "famous": "git+ssh://git@github.com/famous/engine"
   }
