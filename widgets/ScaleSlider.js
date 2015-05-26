@@ -1,14 +1,4 @@
-import assign from '../../util/assign';
 import View from '../components/View';
-
-const SLIDER_STYLES = {
-  color: 'white',
-  fontFamily: 'Lato, sans-serif',
-  fontWeight: '800',
-  textTransform: 'uppercase',
-  lineHeight: '20px',
-  fontSize: '10px'
-};
 
 export default class ScaleSlider extends View {
   constructor(node, options = {}) {
@@ -24,7 +14,9 @@ export default class ScaleSlider extends View {
       .setSizeMode(View.ABSOLUTE_SIZE, View.ABSOLUTE_SIZE, View.ABSOLUTE_SIZE)
       .setAbsoluteSize(this.width, this.height)
       .createDOMElement({
-        properties: assign({}, SLIDER_STYLES, {backgroundColor: 'grey'})
+        properties: {
+          backgroundColor: 'grey'
+        }
       });
 
     this.front = new View(this.addChild());
@@ -32,7 +24,9 @@ export default class ScaleSlider extends View {
       .setSizeMode(View.ABSOLUTE_SIZE, View.ABSOLUTE_SIZE, View.ABSOLUTE_SIZE)
       .setAbsoluteSize(this.width, this.height)
       .createDOMElement({
-        properties: assign({}, SLIDER_STYLES, {backgroundColor: 'white'})
+        properties: {
+          backgroundColor: 'white'
+        }
       });
 
     this.label = new View(this.addChild());
@@ -41,8 +35,15 @@ export default class ScaleSlider extends View {
       .setAbsoluteSize(this.width, this.height)
       .setPosition(5, 0, 0)
       .createDOMElement({
-        properties: assign({}, SLIDER_STYLES, {color: 'black'}),
-        content: options.name
+        content: options.name,
+        properties: {
+          color: 'white',
+          fontFamily: 'Lato, sans-serif',
+          fontWeight: '800',
+          textTransform: 'uppercase',
+          lineHeight: '20px',
+          fontSize: '10px'
+        }
       })
       .setCutoutState(false);
 

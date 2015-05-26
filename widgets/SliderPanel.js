@@ -1,5 +1,5 @@
 import ScaleSlider from './ScaleSlider';
-import View from '../View';
+import View from '../components/View';
 
 export default class SliderPanel extends View {
   constructor(node, options = {}) {
